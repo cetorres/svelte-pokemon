@@ -4,7 +4,7 @@
 
 	let searchText;
 	let offset = 0;
-	let limit = 18;
+	let limit = 24;
 	let page = 1;
 
 	const handleSearch = () => {
