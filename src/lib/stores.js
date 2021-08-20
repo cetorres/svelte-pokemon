@@ -11,3 +11,5 @@ function pokemonStore() {
 }
 
 export const pokemon = pokemonStore();
+
+export const pagination = writable({page: 1, offset: 0, limit: 24, searchText: ''});

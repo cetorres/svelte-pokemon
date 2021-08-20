@@ -1,27 +1,26 @@
 <script lang='ts'>
 	import PokemonCard from '$lib/PokemonCard.svelte';
-	import { pokemon } from '$lib/stores.js';
-
-	let searchText;
-	let offset = 0;
-	let limit = 24;
-	let page = 1;
+	import { pokemon, pagination } from '$lib/stores.js';
 
 	const handleSearch = () => {
-		offset = 0;
-		page = 1;
+		$pagination.offset = 0;
+		$pagination.page = 1;
 		search();
 	}
 
 	const search = () => {
-		pokemon.search(searchText, offset, limit);
+		pokemon.search($pagination.searchText, $pagination.offset, $pagination.limit);
 	}
 
 	const changePage = (value) => {
-		page = page + value;
-		if (page < 1) page = 1;
-		offset = value == 1 ? offset + limit : offset - limit;
-		if (offset < 0) offset = 0;
+		$pagination.page = $pagination.page + value;
+		if ($pagination.page < 1) {
+			$pagination.page = 1;
+		}
+		$pagination.offset = value == 1 ? $pagination.offset + $pagination.limit : $pagination.offset - $pagination.limit;
+		if ($pagination.offset < 0) {
+			$pagination.offset = 0;
+		}
 		search();
 	}
 
@@ -38,7 +37,7 @@
 	</h1>
 
 	<div class='search'>
-		<input type='text' class='search-text' placeholder="search" id='search' bind:value={searchText} on:change={handleSearch} />
+		<input type='text' class='search-text' placeholder="search" id='search' bind:value={$pagination.searchText} on:change={handleSearch} />
 	</div>
 
 	<div class='pokemon-list'>
@@ -54,8 +53,8 @@
 	{/if}
 
 	<div class='pagination-container'>
-		<button on:click={() => changePage(-1)} disabled={page==1}>Previous</button>
-		Page: {page}
+		<button on:click={() => changePage(-1)} disabled={$pagination.page==1}>Previous</button>
+		Page: {$pagination.page}
 		<button on:click={() => changePage(1)} disabled={$pokemon.length == 0}>Next</button>
 	</div>
 </section>
