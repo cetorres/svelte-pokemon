@@ -3,7 +3,7 @@
 </script>
 
 <div class='pokemon-item'>
-  <a href={`pokemon/${pokemon.id}`}>
+  <a href={`svelte-pokemon/pokemon/${pokemon.id}`}>
     <p><img src={pokemon.image} alt={pokemon.name} /></p>
     <p class='name'>{pokemon.name}</p>
   </a>
