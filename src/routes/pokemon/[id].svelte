@@ -2,8 +2,8 @@
 	import { getPokemonById } from '$lib/api';
   import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ page }) => {
-		const pokemon = await getPokemonById(page.params.id);
+	export const load: Load = async ({ params }) => {
+		const pokemon = await getPokemonById(params.id);
 		return {
 			props: {
 				pokemon

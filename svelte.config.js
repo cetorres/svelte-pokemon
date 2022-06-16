@@ -8,12 +8,14 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		// hydrate the <div id="svelte"> element in src/app.html
-		// target: '#svelte',
+		prerender: {
+			default: true
+		},
 		adapter: adapter(),
-		paths: {
-      base: '/svelte-pokemon'
-    },
+		appDir: 'svelte-pokemon'
+		// paths: {
+    //   base: '/svelte-pokemon'
+    // },
 	}
 };
 
