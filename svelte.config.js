@@ -12,10 +12,9 @@ const config = {
 			default: true
 		},
 		adapter: adapter(),
-		appDir: 'svelte-pokemon'
-		// paths: {
-    //   base: '/svelte-pokemon'
-    // },
+		paths: {
+      base: '/svelte-pokemon'
+    },
 	}
 };
 
