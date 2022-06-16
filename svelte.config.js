@@ -12,7 +12,7 @@ const config = {
 		target: '#svelte',
 		adapter: adapter(),
 		paths: {
-      base: '/svelte-pokemon'
+      assets: '/svelte-pokemon'
     },
 	}
 };
